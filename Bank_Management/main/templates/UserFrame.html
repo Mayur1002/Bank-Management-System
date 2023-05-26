@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title%} UserFrame {% endblock title%}
+
+{% block body %}
+
+{% comment %} <style>
+    body {background-color: powderblue;}
+    h1   {color: blue;}
+    p    {color: red;}
+</style> {% endcomment %}
+
+    <div class="bg-white w-5/12" style = body {background-color: powderblue;}>
+        <h1 class="font-mono font-bold text-3xl text-center pb-5 pt-10 px-5">{{ title }}</h1>
+        <hr>
+        <form action = "UserFrame" method="POST" class="px-8 pt-6 pb-8 mb-4">
+            {% csrf_token %}
+            <div class="container-fluid h-custom">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                  <div class="col-md-8 col-lg-5 col-xl-4">
+                    <img src="/static/images/User_icon.png"
+                      class="img-fluid" alt="Sample image">
+                  </div>
+                  <div class="col-md-10 col-lg-8 col-xl-6 offset-xl-1">
+            
+            {%if val == 1 %} <label style = "color: blue" type="label" class="label-outline-primary">View Your Balance is {{bal}} Rs.</label>
+            {%else%} <label type="label" style = "color: blue"class="label-outline-primary">Check your balance</label>
+            {% endif %}
+            <br><br>
+            <div class="form-group">
+              {% comment %} <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter a key" name="Withdraw"> {% endcomment %}
+            </div>  
+            {% comment %} <img src="/static/images/bankSystem.jpg" alt="Girl in a jacket" style="width:500px;height:600px;"> {% endcomment %}
+                    
+
+            <div class="mb-4">
+                <label class="block text-gray-900 text-sm font-bold mb-6" for="amount">
+                    Withdraw Money
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight border rounded-md border-gray-500 focus:outline-none focus:shadow-outline" name="withdraw" id="withdraw" type="number" placeholder="Enter Amount to withdraw">
+            </div>
+            
+            {% if form.amount.errors %} {% for error in form.amount.errors %}
+            <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+            {% endfor %} {% endif %}
+            
+            
+            {% comment %} -----------------Deposite Money----------- {% endcomment %}
+            
+            <div class="mb-4">
+              <label class="block text-gray-900 text-sm font-bold mb-2" for="amount">
+                  Deposite Money
+              </label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight border rounded-md border-gray-500 focus:outline-none focus:shadow-outline" name="Deposite" id="Deposite" type="number" placeholder="Enter Amount to Deposite">
+          </div>
+          {% if form.amount.errors %} {% for error in form.amount.errors %}
+          <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+          {% endfor %} {% endif %}
+          
+          <div class="flex w-full justify-right">
+            <button type = "submit" class="btn btn-primary btn-lg" type="submit">
+            Submit
+        </button>
+        <br><br>
+        
+
+{% comment %} ----------------Change Pin----------------- {% endcomment %}
+            
+            {% comment %} <div class="mb-4">
+                <label class="block text-gray-900 text-sm font-bold mb-2" for="amount">
+                    Change Pin
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight border rounded-md border-gray-500 focus:outline-none focus:shadow-outline" name="amount" id="amount" type="number" placeholder="Amount">
+            </div>
+            {% if form.amount.errors %} {% for error in form.amount.errors %}
+            <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+            {% endfor %} {% endif %}
+            
+            <div class="flex w-full justify-right">
+                <button type = "submit"  class="bg-blue-900 text-dark hover:text-blue-900 hover:bg-white border border-blue-900 font-bold px-4 py-2" type="submit">
+                Submit
+            </button>
+
+            </div> {% endcomment %}
+        </form>
+
+        <form action = "logout" >
+            <div class="flex w-full justify-right">
+                <button type = "submit" class="bg-blue-900 text-dark hover:text-blue-900 hover:bg-white border border-blue-900 font-bold px-4 py-2" type="submit">
+                logout
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock body %}
